@@ -10,9 +10,9 @@ obj/main: build.gpr src/main.adb src/workers.adb src/workers.ads
 obj/result.csv: obj/main src/bench.sh
 	./src/bench.sh $(ITER) $(QSIZE) $(WORKERS) | tee obj/result.csv
 
-graph: obj/graph.png
+graph: obj/result.png
 
-obj/graph.png: src/result.gp obj/result.csv
+obj/result.png: src/result.gp obj/result.csv
 	gnuplot -p $<
 
 clean:
